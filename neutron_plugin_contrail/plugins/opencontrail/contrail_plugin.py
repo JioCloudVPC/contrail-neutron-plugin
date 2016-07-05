@@ -442,6 +442,8 @@ class NeutronPluginContrailCoreV2(neutron_plugin_base_v2.NeutronPluginBaseV2,
         return port_res
 
     def _make_port_dict(self, port):
+        if port:
+            port['binding:vif_type'] = portbindings.VIF_TYPE_VROUTER
         return port
 
     def _get_port(self, context, id, fields=None):
